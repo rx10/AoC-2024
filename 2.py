@@ -1,3 +1,5 @@
+from collections import Counter
+
 def QuickSort(l1):
     if len(l1) <= 1:
         return l1
@@ -15,9 +17,11 @@ with open("input.txt") as file:
 sorted1 = QuickSort(numbers_list[::2])
 sorted2 = QuickSort(numbers_list[1::2])
 
+freq_map = Counter(sorted2)
+
 number_freq = {}
 for i in sorted1:
-    number_freq[i] = sorted2.count(i)
+    number_freq[i] = freq_map[i]
 
 new_freq = number_freq.copy()
 for key, value in number_freq.items():

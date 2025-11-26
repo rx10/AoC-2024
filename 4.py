@@ -75,4 +75,3 @@ def third_part(lst: list) -> int:
 
 #part 2
 print(third_part(second_filtered_list))
-# def third_filter(input_list: list[int]f) -> list[int]:

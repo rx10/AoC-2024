@@ -48,6 +48,7 @@ def mul(a: int,b: int) -> int:
 
 second_filtered_list = second_filter(first_filtered_list)
 
+#part 1
 # def execute_text(lst: list) -> int:
 #     ns = {"sum_total": 0, "mul": mul}
 #     for expr in lst:

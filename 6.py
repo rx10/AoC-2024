@@ -50,7 +50,6 @@ def part_one(arr, dict):
         else:
             incorrect_updates.append(arr[1][i])
     return summation
-
     
 print("Part 1:" + f"{part_one(input_list, input_dict)}")
 

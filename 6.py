@@ -1,4 +1,5 @@
 from collections import defaultdict
+from functools import cmp_to_key
 
 def parse_txt(filename: str) -> list[str]:
     input_list = []
@@ -36,6 +37,8 @@ def is_valid_update(update, dict):
                 return False
     return True
 
+incorrect_updates = []
+
 def part_one(arr, dict):
     summation = 0
     no_of_reports = len(arr[1])
@@ -44,6 +47,25 @@ def part_one(arr, dict):
             current_update = arr[1][i]
             middle_index = len(current_update) // 2
             summation += int(current_update[middle_index])
+        else:
+            incorrect_updates.append(arr[1][i])
     return summation
 
-print(part_one(input_list, input_dict))
+    
+print("Part 1:" + f"{part_one(input_list, input_dict)}")
+
+def part_two(incorrect_updates, dict):
+    def comp_instructions(page_a, page_b):
+        if page_b in dict[page_a]:
+            return -1;
+        if page_a in dict[page_b]:
+            return 1;
+
+    summation = 0;
+    for arr in incorrect_updates:
+        arr = sorted(arr, key=cmp_to_key(comp_instructions))
+        mid = len(arr)//2
+        summation+=int(arr[mid])
+    return summation;
+
+print("Part 2:" + f"{part_two(incorrect_updates,input_dict)}")
